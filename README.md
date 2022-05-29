@@ -33,6 +33,7 @@ https://youtu.be/9Oblo1ZLY1I
 
 https://youtube.com/playlist?list=PL93xoMrxRJIve-GSKU61X6okh5pncG0sH
 
+
 وايضا لابد من ان يكون لديك حساب في Agora
 
 وهذا ايضا فيديو مساعد
