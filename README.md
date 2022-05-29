@@ -9,6 +9,13 @@ Visual Studio
 Android Studio
 
 git 
+
+داخل Visual Studio يتم تنصيب:
+
+
+Flutter
+
+Dart
  
  وهذه بعض الروابط المساعدة:
   
@@ -18,10 +25,19 @@ https://youtu.be/IxSNp7P36Qs
 
 https://youtu.be/9Oblo1ZLY1I
 
-ولابد ايضا ان يكون لديك حساب في قوقل كروم لانشاء قاعدة بيانات في الفاير بيس
+ولابد ايضا ان يكون لديك حساب في قوقل كروم لانشاء قاعدة بيانات في اFirebase
 
 
 وهذه بعض الفيديوهات المساعدة:
 
 
 https://youtube.com/playlist?list=PL93xoMrxRJIve-GSKU61X6okh5pncG0sH
+
+وايضا لابد من ان يكون لديك حساب في Agora
+
+وهذا ايضا فيديو مساعد
+
+https://youtu.be/HnQWpIFKI2w
+
+
+
