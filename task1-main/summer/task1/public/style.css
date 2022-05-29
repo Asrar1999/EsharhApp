@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+body{
+	background-image: url('robot.jpg');
+ 	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+	background-size: cover;
+	text-align: center;
+	opacity: 0.5;
+	
+}
+
+.AllSlider{
+	margin: auto;
+	padding: 2%;
+	background: white;
+	width: 500px;
+	border: 1px;
+	position: relative;
+	color: black;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 100px;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+

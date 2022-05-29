@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>robot arm</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class ="AllSlider">
+<h1><i> لـوحــة تــحــكــم الــروبــوت</i></h1>
+<!--                                 1 الـــــمـــــــــــحــــرك  -->
+	<div class="motor"> المحرك الأول</div>
+	  <div class="slider">
+	   
+	       <div class="slidecontainer">
+		       <input id="input1" type="range" min="0" max="180" value="60" >
+	       </div>
+	    <div class="value1">180</div>
+	 </div>
+	 <br>
+	 
+<!--                                 2 الـــــمـــــــــــحــــرك  -->
+   <div class="motor"> المحرك الثاني</div>
+	  <div class="slider">
+	   
+	       <div class="slidecontainer">
+		       <input id="input2" type="range" min="0" max="180" value="60" >
+	       </div>
+	    <div class="value2">180</div>
+	 </div>
+	 	 <br>
+	 
+<!--                                 3 الـــــمـــــــــــحــــرك  -->
+   <div class="motor"> المحرك الثالث</div>
+	  <div class="slider">
+	   
+	       <div class="slidecontainer">
+		       <input id="input3" type="range" min="0" max="180" value="60" >
+	       </div>
+	    <div class="value3">180</div>
+	 </div>
+	 	 <br>
+	 
+<!--                                 4 الـــــمـــــــــــحــــرك  -->
+   <div class="motor"> المحرك الرابع</div>
+	  <div class="slider">
+	   
+	       <div class="slidecontainer">
+		       <input id="input4" type="range" min="0" max="180" value="60" >
+	       </div>
+	    <div class="value4">180</div>
+	 </div>
+	 	 <br>
+	 
+<!--                                 5 الـــــمـــــــــــحــــرك  -->
+   <div class="motor"> المحرك الخامس</div>
+	  <div class="slider">
+	   
+	       <div class="slidecontainer">
+		       <input id="input5" type="range" min="0" max="180" value="60" >
+	       </div>
+	    <div class="value5">180</div>
+	 </div>
+	 	 <br>
+	 
+<!--                                 6 الـــــمـــــــــــحــــرك  -->
+   <div class="motor"> المحرك السادس</div>
+	  <div class="slider">
+	   
+	       <div class="slidecontainer">
+		       <input id="input6" type="range" min="0" max="180" value="60" >
+	       </div>
+	    <div class="value6">180</div>
+	 </div>
+	 	 <br> 
+	 	 <button class="button">حفظ</button>
+	 	 <button class="button">تشغيل</button>
+	 </div>
+	 
+	
+<!-- ********************************************************************************************************************* -->
+	 <script>
+	 //                                 1 الـــــمـــــــــــحــــرك 
+	 var slider1 = document.querySelector("#input1");
+	 var value1 = document.querySelector(".value1");
+	 value1.innerHTML = slider1.value;
+	 slider1.oninput = function() {
+		 value1.innerHTML = this.value;
+	 }
+	 
+	 //                                 2 الـــــمـــــــــــحــــرك  
+	 var slider2 = document.querySelector("#input2");
+	 var value2 = document.querySelector(".value2");
+	 value2.innerHTML = slider2.value;
+	 slider2.oninput = function() {
+		 value2.innerHTML = this.value;
+	 }
+	 
+	 //                                 3 الـــــمـــــــــــحــــرك  
+	 var slider3 = document.querySelector("#input3");
+	 var value3 = document.querySelector(".value3");
+	 value3.innerHTML = slider3.value;
+	 slider3.oninput = function() {
+		 value3.innerHTML = this.value;
+	 }
+
+	 //                                 4 الـــــمـــــــــــحــــرك  
+	 var slider4 = document.querySelector("#input4");
+	 var value4 = document.querySelector(".value4");
+	 value4.innerHTML = slider4.value;
+	 slider4.oninput = function() {
+		 value4.innerHTML = this.value;
+	 }
+	 
+	 //                                 5 الـــــمـــــــــــحــــرك  
+	 var slider5 = document.querySelector("#input5");
+	 var value5 = document.querySelector(".value5");
+	 value5.innerHTML = slider5.value;
+	 slider5.oninput = function() {
+		 value5.innerHTML = this.value;
+	 }
+	 
+	 //                                 6 الـــــمـــــــــــحــــرك  
+	 var slider6 = document.querySelector("#input6");
+	 var value6 = document.querySelector(".value6");
+	 value6.innerHTML = slider6.value;
+	 slider6.oninput = function() {
+		 value6.innerHTML = this.value;
+	 }
+	 </script>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+   لعرض محتويات الداتا بيس ***
+  getData() async {
+        FirebaseFirestore.instance.collection("Patients").get().then((value) {
+      value.docs.forEach((element)} {
+        print("..........................");
+        print(element.data());
+        print("..........................");
+      });
+    });
+  }
+النتيجة
+I/flutter ( 8651): ..........................
+I/flutter ( 8651): {Center: , Patient ID: tum1MjouUNeM18FYURzjuI8jaXb2, Patient email: secretsah00@gmail.com, Patient phon: 555555555, Lname: alsulami, Sex: انثى, Birthday: 2022/04/23,  password: Asrarah00, Fname: asrar, Patient username: null}
+2
+I/flutter ( 8651): ..........................
+I/flutter ( 8651): {Center: , Patient ID: x7ksj44LTJgbaycyn9P5wPsq1Hq2, Patient email: asrara00@gmail.com, Patient phon: 55555555, Lname: SSSSSSS, Sex: انثى, Birthday: 2022/04/23, Fname: FFFFFF,  password: Asrarah99, Patient username: null}
+2
+I/flutter ( 8651): ..........................
+I/flutter ( 8651): {Center: , Patient ID: 1oQbUIRKT4diDuXQPAMkUuE7Nsm2, Patient email: secretsah00@gmail.com, Patient phon: 0503559300, Lname: السلمي, Sex: انثى, Birthday: 2005/09/13, Fname: لمار,  password: Asdfghjkl00, Patient username: null}
+I/flutter ( 8651): ..........................
+===============================================================================
+   
+لعرض محتويات الداتا بيس ليوزر معين
+getData() async {
+    var doc = FirebaseFirestore.instance.collection("Patients").doc("XjqO46D131br6fxw1xVI");
+    await doc.get().then((value) => print(value.data()));
+  }
+
+النتيجة
+I/flutter ( 8651): {Center: , Patient ID: 1oQbUIRKT4diDuXQPAMkUuE7Nsm2, Patient email: secretsah00@gmail.com, Patient phon: 0503559300, Lname: السلمي, Sex: انثى, Birthday: 2005/09/13, Fname: لمار,  password: Asdfghjkl00, Patient username: null}
+
+==============================================================================
+لتحقق من ان الشخص موجود او لا 
+getData() async {
+    var doc = FirebaseFirestore.instance.collection("Patients").doc("XjqO46D131br6fxw1xVI");
+    await doc.get().then((value) => print(value.exists));
+}
+
+النتيجة
+اذا موجود 
+I/flutter ( 8651): true
+اذاغير موجود
+I/flutter ( 8651): false
+==================================================================================
+عشان اجلب الايدي 
+  getData() async {
+    var doc = FirebaseFirestore.instance.collection("Patients").doc("XjqO4D131br6fxw1xVI");
+    await doc.get().then((value) => print(value.id));
+  }
+
+  النتيجة
+  I/flutter ( 8651): XjqO4D131br6fxw1xVI
+  ===============================================================================
+اجلب الداتا بناء على شرط
+  getData() async {
+    CollectionReference Patientsref =
+        FirebaseFirestore.instance.collection("Patients");
+    await Patientsref.where("Fname",isEqualTo: "لمار").get().then((value) {
+     //await Patientsref.whereIn:["لمار","معتز"].get().then((value) --> عشان ابحث عن كذا قيمة 
+     //await Patientsref.whereNotIn:["لمار","معتز"].get().then((value) --> عشان مايبحث عن هذي القيمة 
+     //await Patientsref.where("Fname",arrayContains: "لمار").get().then((value) -->  لما ابحث في اريه عنصر واحد 
+     //await Patientsref.where("Fname",arrayContains: ['معتز",'لمار").get().then((value) -->  "لما ابحث في اريه اكثر من عنصر "او 
+ 
+      value.docs.forEach((element) { 
+        print(element.data());
+        print("======================================================");
+      });
+    });
+  }
+  النتيجة
+  I/flutter ( 8651): {Center: , Patient ID: 1oQbUIRKT4diDuXQPAMkUuE7Nsm2, Patient email: secretsah00@gmail.com, Patient phon: 0503559300, Lname: السلمي, Sex: انثى, Birthday: 2005/09/13, Fname: لمار,  password: Asdfghjkl00, Patient username: null}
+I/flutter ( 8651): ======================================================
+================================================================================
+    User? user = FirebaseAuth.instance.currentUser;
+    var formdata = formstate.currentState;
+    if (formdata!.validate() && user != null && !user.emailVerified) {
+      formdata.save();
+      user.sendEmailVerification();
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: "$Email", password: "$Fpassword");
+        _firestore.collection('Patients').add({
+          'Birthday': dateinput.text,
+          'Center': "",
+          'Fname': FName,
+          'Lname': LName,
+          'Patient ID': user.uid,
+          'Patient email': Email,
+          ' password': Fpassword,
+          'Patient phon': PhonNmber,
+          'Patient username': userName,
+          'Sex': seletedSex
+        });
+        return userCredential;
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          print('The password provided is too weak.');
+        } else if (e.code == 'email-already-in-use') {
+          AwesomeDialog(
+              context: context,
+              // title: "خطأ",
+              body: Text("الايميل موجود سابقا",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 146, 37, 142),
+                      fontSize: 20,
+                      fontFamily: "Tajawal")),
+              animType: AnimType.RIGHSLIDE,
+              dialogType: DialogType.WARNING,
+              btnOkOnPress: () {},
+              btnOkText: "حسنا",
+              buttonsTextStyle: TextStyle(fontSize: 20, fontFamily: "Tajawal"),
+              btnOkColor: Color.fromARGB(255, 83, 16, 97),
+              padding: EdgeInsets.only(bottom: 30, top: 30))
+            ..show();
+        }
+      } catch (e) {
+        print(e);
+      }
+    } else {
+      print("Not Valid");
+    }
+======================================================================
+عشان يلف على الداتا بيس ويجيب المعلومات --> تصلح لصغحة السيرش
+  List users = [];
+  CollectionReference usersref =
+      FirebaseFirestore.instance.collection("Patients");
+  getData() async {
+    var responsbody = await usersref.get();
+    responsbody.docs.forEach((element) {
+      setState(() {
+        users.add(element.data());
+      });
+    });
+    print(users);
+  }
+
+  عشان اعرضها على الشاشة
+   شي واحد 
+          ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context , i){
+            return Text("${users[i]['Patient email']}");
+        }),
+        اكثر من شي
+                ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context , i){
+            return ListTile(
+              trailing: Text("Email: ${users[i]['Patient email']}"),
+              subtitle: Text("Email: ${users[i]['Patient phon']}") ,
+            );
+        }),
+        
+=================================================================================
+عشان اعرض معلومات شخص معين
+  List users = [];
+  DocumentReference usersref =FirebaseFirestore.instance.collection("Patients").doc("nur6bqEX3q0ukhpgrdki");
+  getData() async {
+    var responsbody = await usersref.get();
+      setState(() {
+        users.add(responsbody.data());
+      });
+  
+    print(users);
+  }
+
+          users.isEmpty ||users==null? Text("data"): ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context , i){
+            return ListTile(
+              trailing: Text("Email: ${users[i]['Patient email']}"),
+              subtitle: Text("Email: ${users[i]['Patient phon']}") ,
+            );
+        }),
+=======================================================================================
+
+صفحة السيرش
+  CollectionReference usersref =
+      FirebaseFirestore.instance.collection("Patients");
+
+        StreamBuilder(
+          stream: usersref.snapshots(),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (snapshot.hasError) {
+              return Text("object");
+            }
+                if (snapshot.hasData) {
+                  return 
+                  ListView.builder(
+                      itemCount: snapshot.data.docs.length,
+                      itemBuilder: (context, i) {
+                    return Text("${snapshot.data.docs[i].data()['Fname']}");
+                  });}
+
+            //=======================================================================
+            return Text("data");
+          },
+        )
+         if (Isnot == true && Isnot2 == true) {
+                                    _firestore.collection('Appointments').doc(Snapshot.data.docs[i].id).update({
+                                       'NumAppointment': randomNumber,
+                                      'Day': day,
+                                      'Time': time,
+                                      'PatientID': FirebaseAuth
+                                          .instance.currentUser!.uid
+                                    });
+
+//////////////////////////////////////////////////////////////////////
+ Container(
+                              // width: double.infinity,
+                              color: Colors.white,
+                              margin: EdgeInsets.only(top: 50, right: 30),
+                              child: Text("الاوقات المتاحة لهذا الاسبوع",
+                                  style: TextStyle(
+                                      color: Color(0xff8B8080),
+                                      fontSize: 20,
+                                      fontFamily: "El_Messiri")),
+                            ),
+
+
+                              Container(
+                              margin: EdgeInsets.only(top: 10, right: 130),
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  if (Isnot == true && Isnot2 == true) {
+                                    _firestore.collection('Appointments').add({
+                                      'NumAppointment': randomNumber,
+                                      'Day': day,
+                                      'Time': time,
+                                      'PatientID': FirebaseAuth
+                                          .instance.currentUser!.uid,
+                                    });
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PaiementPage()),
+                                    );
+                                  } else if (Isnot2 != true) {
+                                    AwesomeDialog(
+                                        context: context,
+                                        // title: "خطأ",
+                                        body: Text(
+                                            "الرجاء اختيار اليوم المناسب  ",
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 146, 37, 142),
+                                                fontSize: 20,
+                                                fontFamily: "Tajawal")),
+                                        animType: AnimType.RIGHSLIDE,
+                                        dialogType: DialogType.WARNING,
+                                        btnOkOnPress: () {},
+                                        btnOkText: "حسنا",
+                                        buttonsTextStyle: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: "Tajawal"),
+                                        btnOkColor:
+                                            Color.fromARGB(255, 83, 16, 97),
+                                        padding: EdgeInsets.only(
+                                            bottom: 30, top: 30))
+                                      ..show();
+                                  } else if (Isnot != true) {
+                                    AwesomeDialog(
+                                        context: context,
+                                        // title: "خطأ",
+                                        body: Text(
+                                            "الرجاء اختيار الوقت المناسب  ",
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 146, 37, 142),
+                                                fontSize: 20,
+                                                fontFamily: "Tajawal")),
+                                        animType: AnimType.RIGHSLIDE,
+                                        dialogType: DialogType.WARNING,
+                                        btnOkOnPress: () {},
+                                        btnOkText: "حسنا",
+                                        buttonsTextStyle: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: "Tajawal"),
+                                        btnOkColor:
+                                            Color.fromARGB(255, 83, 16, 97),
+                                        padding: EdgeInsets.only(
+                                            bottom: 30, top: 30))
+                                      ..show();
+                                  }
+                                },
+                                child: Text(
+                                  "أكمل الدفع",
+                                  style: TextStyle(
+                                      fontSize: 20, fontFamily: "Tajawal"),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 30, vertical: 10),
+                                    primary: Colors.purple,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30))),
+                              ),
+                            )

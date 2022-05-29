@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "958643777957",
+    "firebase_url": "https://esharah-d49ef-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "esharah-d49ef",
+    "storage_bucket": "esharah-d49ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958643777957:android:45f52a15afc37a9d9c384c",
+        "android_client_info": {
+          "package_name": "com.example.appn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958643777957-945gqjqulsmuf2ccuhn91q7crg93a9hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmKfZq-oGIF10M6Fs7FSuhIOC-2kUu_HU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958643777957-945gqjqulsmuf2ccuhn91q7crg93a9hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
