@@ -20,7 +20,7 @@ Flutter
 
 Dart
  
- وهذه بعض الروابط المساعدة:
+ وهذه بعض الفيديوهات المساعدة:
   
 https://youtube.com/playlist?list=PL93xoMrxRJItdRumqolHX0UT-LHK8_39N
 
